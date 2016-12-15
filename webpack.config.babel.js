@@ -33,6 +33,12 @@ module.exports = {
 				loader: 'source-map-loader'
 			},
 			{
+				enforce: 'pre',
+				test: /\.js$/,
+				exclude: /node_modules\//,
+				loader: 'eslint-loader'
+			},
+			{
 				test: /\.js$/,
 				loader: 'babel-loader',
 				include: [
@@ -42,7 +48,7 @@ module.exports = {
 			},
 			{
 				test: /\.(scss|css)$/,
-				loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
+				loader: ExtractTextPlugin.extract('style-loader!css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
 			},
 			{
 				test: /\.json$/,

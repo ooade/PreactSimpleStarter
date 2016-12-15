@@ -18,12 +18,13 @@ export default class App extends Component {
 		this.props.removeTodo(todo);
 	};
 
-	render({ todos }, { text }) {
+	render({ todos, children }, { text }) {
 		return (
 			<Card shadow={2}>
 				<form onSubmit={this.addTodos} action="javascript:">
 					<TextField floating-label value={text} onInput={this.linkState('text')} label="What must be done?" />
 				</form>
+				{children}
 				<ul>
 					{ todos.map(todo => (
 						<TodoItem key={todo.id} todo={todo} onRemove={this.removeTodo} />

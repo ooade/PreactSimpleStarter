@@ -4,6 +4,6 @@ import { routerReducer } from 'react-router-redux';
 import todos from './todos';
 
 export default combineReducers({
-  routing: routerReducer,
-  todos,
+    routing: routerReducer,
+  todos
 });

@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 
 const defaultState = {
 	todos: []
-}
+};
 
 import rootReducer from './reducers';
 
