@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
-import { TextField, Card } from 'preact-mdl';
+import { TextField, Card, Layout } from 'preact-mdl';
 import bindActions from '../util';
 import reducers from '../reducers';
 import { addTodo, removeTodo } from '../actions/todo';
@@ -8,7 +8,9 @@ import TodoItem from './todo-item';
 
 @connect(reducers, bindActions({ addTodo, removeTodo }))
 export default class App extends Component {
-	addTodos = () => {
+	addTodos = e => {
+		e.preventDefault();
+		
 		let { text } = this.state;
 		this.setState({ text: '' });
 		this.props.addTodo(text);
@@ -21,8 +23,13 @@ export default class App extends Component {
 	render({ todos, children }, { text }) {
 		return (
 			<Card shadow={2}>
-				<form onSubmit={this.addTodos} action="javascript:">
-					<TextField floating-label value={text} onInput={this.linkState('text')} label="What must be done?" />
+				<form onSubmit={this.addTodos}>
+					<TextField
+						floating-label
+						value={text}
+						onInput={this.linkState('text')}
+						label='What must be doned?'
+					/>
 				</form>
 				{children}
 				<ul>

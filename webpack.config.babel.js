@@ -8,7 +8,7 @@ const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
 	entry: './src/index.js',
-	
+
 	output: {
 		path: path.resolve(__dirname, './build'),
 		publicPath: '/',
@@ -29,14 +29,14 @@ module.exports = {
 			{
 				enforce: 'pre',
 				test: /\.js$/,
-				exclude: /src\//,
-				loader: 'source-map-loader'
+				loader: 'source-map-loader',
+				exclude: /src/
 			},
 			{
 				enforce: 'pre',
 				test: /\.js$/,
-				include: /src\//,
-				loader: 'eslint-loader'
+				loader: 'eslint-loader',
+				include: /src/
 			},
 			{
 				test: /\.js$/,
@@ -95,7 +95,6 @@ module.exports = {
 	stats: { colors: true },
 
 	devtool: ENV === 'production' ? 'source-map' : 'inline-source-map',
-
 	devServer: {
 		port: process.env.PORT || 8080,
 		host: '0.0.0.0',

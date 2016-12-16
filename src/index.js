@@ -7,7 +7,8 @@ import 'material-design-lite/material';
 import App from './components/App';
 
 import store, { history } from './store';
-import './style';
+
+import './style/index.scss';
 
 const routes = {
 	childRoutes: [{

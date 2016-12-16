@@ -4,7 +4,7 @@ export default class Profile extends Component {
 	render() {
 		return (
 			<li>
-			   Books are good
+				Books are cool ;)
 			</li>
 		);
 	}
