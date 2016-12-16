@@ -8,7 +8,7 @@ const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
 	entry: './src/index.js',
-
+	
 	output: {
 		path: path.resolve(__dirname, './build'),
 		publicPath: '/',
@@ -35,20 +35,20 @@ module.exports = {
 			{
 				enforce: 'pre',
 				test: /\.js$/,
-				exclude: /node_modules\//,
+				include: /src\//,
 				loader: 'eslint-loader'
 			},
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
 				include: [
-			    path.resolve('src'),
-			    path.resolve('node_modules/preact-compat/src')
-			  ]
+					path.resolve('src'),
+					path.resolve('node_modules/preact-compat/src')
+				]
 			},
 			{
 				test: /\.(scss|css)$/,
-				loader: ExtractTextPlugin.extract('style-loader!css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
+				loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
 			},
 			{
 				test: /\.json$/,

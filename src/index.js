@@ -6,6 +6,9 @@ import 'material-design-lite/material';
 
 import App from './components/App';
 
+import store, { history } from './store';
+import './style';
+
 const routes = {
 	childRoutes: [{
 		path: '/',
@@ -16,8 +19,6 @@ const routes = {
 	}]
 };
 
-import store, { history } from './store';
-import './style';
 
 render(
 	<Provider store={store}>
