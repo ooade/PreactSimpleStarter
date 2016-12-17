@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import OfflinePlugin from 'offline-plugin';
 import autoprefixer from 'autoprefixer';
 
 const ENV = process.env.NODE_ENV || 'development';
@@ -81,11 +82,28 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
-			title: 'Preact Hackathon Starter',
+			title: 'Preact Simple Starter',
 			inject: false,
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true
+			},
+			manifest: 'assets/manifest.json',
+			themeColor: '#333'
+		}),
+		new OfflinePlugin({
+			publicPath: '/',
+			updateStrategy: 'all',
+			preferOnline: true,
+			safeToUseOptionalCaches: true,
+			caches: 'all',
+			version: 'pss.[hash]',
+			ServiceWorker: {
+				navigateFallbackURL: '/',
+				events: true
+			},
+			AppCache: {
+				FALLBACK: { '/': '/' }
 			}
 		})
 	]).concat(ENV === 'production' ? [

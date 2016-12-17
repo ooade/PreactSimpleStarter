@@ -2,6 +2,8 @@ import { h, render } from 'preact';
 import { Provider } from 'preact-redux';
 import { Router } from 'react-router';
 
+require('offline-plugin/runtime').install();
+
 import 'material-design-lite/material';
 
 import App from './components/App';

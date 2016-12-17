@@ -10,7 +10,7 @@ import TodoItem from './todo-item';
 export default class App extends Component {
 	addTodos = e => {
 		e.preventDefault();
-		
+
 		let { text } = this.state;
 		this.setState({ text: '' });
 		this.props.addTodo(text);

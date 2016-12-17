@@ -1,0 +1,7 @@
+{
+  "name": "PreactSimpleStarter",
+  "short_name": "PSS",
+  "start_url": "/",
+  "display": "standalone",
+  "themeColor": "#333"
+}
