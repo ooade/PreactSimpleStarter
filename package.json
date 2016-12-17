@@ -8,6 +8,7 @@
     "prestart": "npm run build",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "prebuild": "rm -rf build mkdirp build",
+    "build-gh": "./.build-gh.sh",
     "test": "eslint src tests/**/*.js"
   },
   "keywords": [

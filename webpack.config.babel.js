@@ -88,7 +88,7 @@ module.exports = {
 				collapseWhitespace: true,
 				removeComments: true
 			},
-			manifest: 'assets/manifest.json',
+			manifest: `${ENV === 'production' ? 'appcache' : 'assets' }/manifest.json`,
 			themeColor: '#333'
 		}),
 		new OfflinePlugin({
