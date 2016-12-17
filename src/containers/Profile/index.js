@@ -1,7 +1,7 @@
 import Profile from './Profile';
 
 module.exports = {
-	path: 'profile',
+	path: 'me',
 	getComponent(nextState, cb) {
 		require.ensure([], require => {
 			cb(null, Profile);

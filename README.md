@@ -2,8 +2,6 @@
 
 Preact + Preact-mdl + React Router + Redux powered by Webpack 2 with Service worker.
 
----
-
 
 # Quick-Start Guide
 
@@ -24,10 +22,10 @@ cd PreactSimpleStarter
 **2. Make it your own:**
 
 ```sh
-rm -rf .git && git init && npm init
+rm -rf .git && git init && yarn init
 ```
 
-> :information_source: This re-initializes the repo and sets up your NPM project.
+> :information_source: This re-initializes the repo and sets up your yarn project.
 
 
 **3. Install the dependencies:**
@@ -46,22 +44,20 @@ yarn install
 **4. Start a live-reload development server:**
 
 ```sh
-npm run dev
+yarn run dev
 ```
 
 > This is a full web server nicely suited to your project. Any time you make changes within the `src` directory, it will rebuild and even refresh your browser.
 
+> :information_source: Try to avoid using Service Worker in your development environment, because you'll need to hard reload the page anytime you make a change.
 
 **5. Generate a production build in `./build`:**
 
 ```sh
-npm run build
+yarn run build
 ```
 
 You can now deploy the contents of the `build` directory to production!
-
----
-
 
 ## License
 

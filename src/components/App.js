@@ -1,6 +1,8 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 import { TextField, Card, Layout } from 'preact-mdl';
+import { Link } from 'react-router';
+
 import bindActions from '../util';
 import reducers from '../reducers';
 import { addTodo, removeTodo } from '../actions/todo';
@@ -22,22 +24,27 @@ export default class App extends Component {
 
 	render({ todos, children }, { text }) {
 		return (
-			<Card shadow={2}>
-				<form onSubmit={this.addTodos}>
-					<TextField
-						floating-label
-						value={text}
-						onInput={this.linkState('text')}
-						label='What must be doned?'
-					/>
-				</form>
-				{children}
-				<ul>
-					{ todos.map(todo => (
-						<TodoItem key={todo.id} todo={todo} onRemove={this.removeTodo} />
-					)) }
-				</ul>
-			</Card>
+			<div>
+				<Card shadow={2}>
+					<form onSubmit={this.addTodos}>
+						<TextField
+							floating-label
+							value={text}
+							onInput={this.linkState('text')}
+							label='What must be doned?'
+						/>
+					</form>
+					<ul>
+						{ todos.map(todo => (
+							<TodoItem key={todo.id} todo={todo} onRemove={this.removeTodo} />
+						)) }
+					</ul>
+					<p>
+					<Link to='/me'> Developed by? </Link>
+					</p>
+					{ children }
+				</Card>
+			</div>
 		);
 	}
 }

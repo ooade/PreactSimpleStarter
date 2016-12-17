@@ -1,13 +1,10 @@
 html, body {
-	height: 100%;
 	width: 100%;
 	padding: 0;
 	margin: 0;
 	background: #767A7F;
 	font-family: 'Helvetica Neue', arial, sans-serif;
 	font-weight: 400;
-	margin-top: 40px;
-	text-align: -webkit-center;
 	color: #444;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -42,4 +39,19 @@ ul {
 			border-bottom: none;
 		}
 	}
+}
+
+a {
+	text-decoration: none;
+}
+
+p, .profile {
+	text-align: center;
+	padding: 10px;
+}
+
+.mdl-card {
+	margin: auto;
+	transition: all .3s;
+	transform: translateY(100px);
 }
