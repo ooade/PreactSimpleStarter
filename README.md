@@ -2,6 +2,12 @@
 
 Preact + Preact-mdl + React Router + Redux powered by Webpack 2 with Service worker.
 
+<img src='lighthouse.png' />
+_Audits on lighthouse_
+- First meaningful paint in 147.1ms
+- Time to interactive in 150.1ms
+
+We'll add the necessary things to have a green :smile:
 
 # Quick-Start Guide
 
