@@ -31,7 +31,7 @@ export default class App extends Component {
 							floating-label
 							value={text}
 							onInput={this.linkState('text')}
-							label='What must be doned?'
+							label='What must be done?'
 						/>
 					</form>
 					<ul>

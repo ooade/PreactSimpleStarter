@@ -1,8 +1,21 @@
 import { h, render } from 'preact';
 import { Provider } from 'preact-redux';
 import { Router } from 'react-router';
+import runtime from 'offline-plugin/runtime';
 
-require('offline-plugin/runtime').install();
+runtime.install({
+	// When an update is ready, tell ServiceWorker to take control immediately:
+	onUpdateReady() {
+		console.log('update ready');
+		runtime.applyUpdate();
+	},
+
+	// Reload to get the new version:
+	onUpdated() {
+		console.log('updated');
+		location.reload();
+	}
+});
 
 import 'material-design-lite/material';
 

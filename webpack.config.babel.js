@@ -2,6 +2,8 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import ManifestPlugin from 'webpack-manifest-plugin';
 import OfflinePlugin from 'offline-plugin';
 import autoprefixer from 'autoprefixer';
 
@@ -12,7 +14,6 @@ module.exports = {
 
 	output: {
 		path: path.resolve(__dirname, './build'),
-		publicPath: '/',
 		filename: 'bundle.[hash:8].js',
 		chunkFilename: '[name].[chunkhash].chunk.js'
 	},
@@ -83,31 +84,37 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
 			title: 'Preact Simple Starter',
+		 	removeRedundantAttributes: true,
 			inject: false,
+			manifest: `${ENV === 'production' ? 'manifest.json' : '/assets/manifest.json' }`,
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true
 			},
-			manifest: `${ENV === 'production' ? 'appcache' : 'assets' }/manifest.json`,
 			themeColor: '#333'
 		}),
+		new ManifestPlugin({
+			fileName: 'asset-manifest.json'
+		})
+	]).concat(ENV === 'production' ? [
+		new webpack.NoErrorsPlugin(),
+		new CopyWebpackPlugin([
+			{ from: './src/assets/manifest.json', to: './' },
+		]),
 		new OfflinePlugin({
+			relativePaths: false,
 			publicPath: '/',
 			updateStrategy: 'all',
 			preferOnline: true,
 			safeToUseOptionalCaches: true,
 			caches: 'all',
-			version: 'pss.[hash]',
+			version: 'PreactSSv[hash]',
 			ServiceWorker: {
 				navigateFallbackURL: '/',
 				events: true
 			},
-			AppCache: {
-				FALLBACK: { '/': '/' }
-			}
+			AppCache: false
 		})
-	]).concat(ENV === 'production' ? [
-		new webpack.NoErrorsPlugin()
 	] : []),
 
 	stats: { colors: true },
