@@ -4,16 +4,13 @@ Preact + Preact-mdl + React Router + Redux powered by Webpack 2 with Service wor
 
 <img src='lighthouse.png' />
 _Audits on lighthouse_
-- First meaningful paint in 147.1ms
-- Time to interactive in 150.1ms
 
-We'll add the necessary things to have a green :smile:
+We've increased the lighthouse score as promised :smile:
 
 # Quick-Start Guide
 
 - [Installation](#installation)
 - [Development Workflow](#development-workflow)
-
 
 ## Installation
 

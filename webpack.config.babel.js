@@ -100,6 +100,7 @@ module.exports = {
 		new webpack.NoErrorsPlugin(),
 		new CopyWebpackPlugin([
 			{ from: './src/assets/manifest.json', to: './' },
+			{ from: './src/assets/img', to: './img' }
 		]),
 		new OfflinePlugin({
 			relativePaths: false,

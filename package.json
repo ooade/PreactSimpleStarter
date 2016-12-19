@@ -8,7 +8,8 @@
     "prestart": "npm run build",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "prebuild": "rm -rf build mkdirp build",
-    "test": "eslint src tests/**/*.js"
+    "test": "eslint src tests/**/*.js",
+    "push-surge": "npm run build && surge ./build -d preact-app.surge.sh"
   },
   "keywords": [
     "preact",
