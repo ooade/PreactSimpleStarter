@@ -1,9 +1,10 @@
 {
   "name": "preact-simple-starter",
+  "private": true,
   "version": "0.1.0",
   "description": "Ready-to-go Preact + Redux Simple starter, powered by webpack 2.",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server -d --hot --inline --progress",
+    "dev": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server",
     "start": "superstatic build -p 9999 --host 0.0.0.0 --gzip -c '{\"rewrites\": [{\"source\":\"**\",\"destination\":\"index.html\"}],\"headers\":[{\"source\":\"**\",\"headers\":[{\"key\":\"Cache-Control\",\"value\":\"max-age=86400\"}]}]}'",
     "prestart": "npm run build",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
@@ -30,10 +31,8 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2015": "^6.18.0",
-    "babel-preset-es2015-minimal": "^2.1.0",
     "babel-preset-stage-0": "6.16.0",
     "babel-register": "^6.18.0",
-    "chai": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.3",
     "css-loader": "^0.26.1",
@@ -54,7 +53,9 @@
     "source-map-loader": "^0.1.5",
     "superstatic": "^4.0.3",
     "url-loader": "^0.5.7",
-    "webpack": "2.2.0-rc.2",
+    "v8-lazy-parse-webpack-plugin": "^0.3.0",
+    "webpack": "2.2.0-rc.3",
+    "webpack-dashboard": "^0.2.1",
     "webpack-dev-server": "2.2.0-rc.0",
     "webpack-manifest-plugin": "^1.1.0"
   },

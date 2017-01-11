@@ -6,16 +6,21 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import OfflinePlugin from 'offline-plugin';
 import autoprefixer from 'autoprefixer';
+import Dashboard from 'webpack-dashboard/plugin';
+import V8LazyParse from 'v8-lazy-parse-webpack-plugin';
 
 const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		app: './src/index.js',
+		vendor: ['preact', 'react-router' , 'redux', 'preact-mdl']
+	},
 
 	output: {
 		path: path.resolve(__dirname, './build'),
-		filename: 'bundle.[hash:8].js',
-		chunkFilename: '[name].[chunkhash].chunk.js'
+		filename: '[name].[hash:8].js',
+		chunkFilename: '[id].[hash:8].chunk.js'
 	},
 
 	resolve: {
@@ -68,6 +73,8 @@ module.exports = {
 	},
 
 	plugins: ([
+		new V8LazyParse(),
+		new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
 		new webpack.LoaderOptionsPlugin({
 			options: {
 				context: __dirname,
@@ -96,7 +103,14 @@ module.exports = {
 		new ManifestPlugin({
 			fileName: 'asset-manifest.json'
 		})
-	]).concat(ENV === 'production' ? [
+	])
+	// Only for development
+	.concat(ENV === 'development' ? [
+		new webpack.HotModuleReplacementPlugin(),
+		new Dashboard()
+	] : [])
+	// Only for production
+	.concat(ENV === 'production' ? [
 		new webpack.NoErrorsPlugin(),
 		new CopyWebpackPlugin([
 			{ from: './src/assets/manifest.json', to: './' },

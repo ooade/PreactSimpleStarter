@@ -2,10 +2,8 @@
 
 Preact + Preact-mdl + React Router + Redux powered by Webpack 2 with Service worker.
 
-<img src='lighthouse.png' />
-_Audits on lighthouse_
-
-We've increased the lighthouse score as promised :smile:
+<img src='lh.png' />
+_100/100 on lighthouse 1.4.1 audits_
 
 # Quick-Start Guide
 
