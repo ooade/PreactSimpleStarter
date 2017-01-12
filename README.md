@@ -1,6 +1,13 @@
 # Preact Simple Starter
 
-Preact + Preact-mdl + React Router + Redux powered by Webpack 2 with Service worker.
+PWA Simple Starter with Preact, Webpack 2 and your favorite React related packages. This project uses:
+  - Preact
+  - Preact-mdl
+  - React-Router
+  - Redux
+  - React-Helmet
+  - Sass
+  - Webpack Dashboard(For Bundle Analysis)
 
 <img src='lh.png' />
 _100/100 on lighthouse 1.4.1 audits_
