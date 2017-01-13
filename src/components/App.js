@@ -24,27 +24,25 @@ export default class App extends Component {
 
 	render({ todos, children }, { text }) {
 		return (
-			<div>
-				<Card shadow={2}>
-					<form onSubmit={this.addTodos}>
-						<TextField
-							floating-label
-							value={text}
-							onInput={this.linkState('text')}
-							label='What must be done?'
-						/>
-					</form>
-					<ul>
-						{ todos.map(todo => (
-							<TodoItem key={todo.id} todo={todo} onRemove={this.removeTodo} />
-						)) }
-					</ul>
-					<p>
-					<Link to='/me'> Developed by? </Link>
-					</p>
-					{ children }
-				</Card>
-			</div>
+			<Card shadow={2}>
+				<form onSubmit={this.addTodos}>
+					<TextField
+						floating-label
+						value={text}
+						onInput={this.linkState('text')}
+						label='What must be done?'
+					/>
+				</form>
+				<ul>
+					{ todos.map(todo => (
+						<TodoItem key={todo.id} todo={todo} onRemove={this.removeTodo} />
+					)) }
+				</ul>
+				<p>
+				<Link to='/me'> Developed by? </Link>
+				</p>
+				{ children }
+			</Card>
 		);
 	}
 }
