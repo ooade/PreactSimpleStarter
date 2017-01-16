@@ -53,7 +53,6 @@
     "source-map-loader": "^0.1.5",
     "superstatic": "^4.0.3",
     "url-loader": "^0.5.7",
-    "v8-lazy-parse-webpack-plugin": "^0.3.0",
     "webpack": "2.2.0-rc.7",
     "webpack-dashboard": "^0.2.1",
     "webpack-dev-server": "2.2.0-rc.0",

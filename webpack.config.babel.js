@@ -7,7 +7,6 @@ import ManifestPlugin from 'webpack-manifest-plugin';
 import OfflinePlugin from 'offline-plugin';
 import autoprefixer from 'autoprefixer';
 import Dashboard from 'webpack-dashboard/plugin';
-import V8LazyParse from 'v8-lazy-parse-webpack-plugin';
 
 const ENV = process.env.NODE_ENV || 'development';
 
@@ -73,7 +72,6 @@ module.exports = {
 	},
 
 	plugins: ([
-		new V8LazyParse(),
 		new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.LoaderOptionsPlugin({
