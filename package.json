@@ -54,7 +54,7 @@
     "superstatic": "^4.0.3",
     "url-loader": "^0.5.7",
     "v8-lazy-parse-webpack-plugin": "^0.3.0",
-    "webpack": "2.2.0-rc.3",
+    "webpack": "2.2.0-rc.6",
     "webpack-dashboard": "^0.2.1",
     "webpack-dev-server": "2.2.0-rc.0",
     "webpack-manifest-plugin": "^1.1.0"

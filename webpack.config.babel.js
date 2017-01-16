@@ -75,6 +75,7 @@ module.exports = {
 	plugins: ([
 		new V8LazyParse(),
 		new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.LoaderOptionsPlugin({
 			options: {
 				context: __dirname,
@@ -111,7 +112,7 @@ module.exports = {
 	] : [])
 	// Only for production
 	.concat(ENV === 'production' ? [
-		new webpack.NoErrorsPlugin(),
+		new webpack.NoEmitOnErrorsPlugin(),
 		new CopyWebpackPlugin([
 			{ from: './src/assets/manifest.json', to: './' },
 			{ from: './src/assets/img', to: './img' }
@@ -134,7 +135,7 @@ module.exports = {
 
 	stats: { colors: true },
 
-	devtool: ENV === 'production' ? 'source-map' : 'inline-source-map',
+	devtool: ENV === 'production' ? 'source-map' : 'eval',
 	devServer: {
 		port: process.env.PORT || 8080,
 		host: '0.0.0.0',
