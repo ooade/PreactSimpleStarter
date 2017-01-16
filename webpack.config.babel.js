@@ -80,7 +80,9 @@ module.exports = {
 			options: {
 				context: __dirname,
 				postcss: [autoprefixer]
-			}
+			},
+			minimize: true,
+			debug: false
 		}),
 		new ExtractTextPlugin({
 			filename: '[name].[chunkhash:5].css',
@@ -130,12 +132,21 @@ module.exports = {
 				events: true
 			},
 			AppCache: false
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			output: {
+				comments: 0
+			},
+			compress: {
+				unused: 1,
+				warnings: 0
+			}
 		})
 	] : []),
 
 	stats: { colors: true },
 
-	devtool: ENV === 'production' ? 'source-map' : 'eval',
+	devtool: ENV !== 'production' && 'eval',
 	devServer: {
 		port: process.env.PORT || 8080,
 		host: '0.0.0.0',
