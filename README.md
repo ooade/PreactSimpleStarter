@@ -9,6 +9,10 @@ PWA Simple Starter with Preact, Webpack 2 and your favorite React related packag
   - Sass
   - Webpack Dashboard(For Bundle Analysis)
 
+JS Build files:
+ - app.js - 97.7kb (21.4kb gzipped)
+ - vendor.js - 107.6kb (29.1kb gzipped)
+
 <img src='lh.png' />
 _100/100 on lighthouse 1.4.1 audits_
 
