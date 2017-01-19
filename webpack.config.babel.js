@@ -11,7 +11,7 @@ import Dashboard from 'webpack-dashboard/plugin';
 
 const ENV = process.env.NODE_ENV || 'development';
 
-module.exports = {
+let config = {
 	entry: {
 		app: './src/index.js',
 		vendor: ['preact', 'react-router' , 'redux', 'preact-mdl']
@@ -24,8 +24,9 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: ['.js'],
+		extensions: ['.js', '.scss'],
 		alias: {
+			components: path.resolve(__dirname, 'src/components'),    // used for tests
 			'react': 'preact-compat',
 			'react-dom': 'preact-compat'
 		}
@@ -171,3 +172,9 @@ module.exports = {
 		historyApiFallback: true
 	}
 };
+
+const commonsChunkPluginIndex = config.plugins.findIndex(plugin => plugin.chunkNames);
+
+config.plugins.splice(commonsChunkPluginIndex, 1);
+
+module.exports = config;
