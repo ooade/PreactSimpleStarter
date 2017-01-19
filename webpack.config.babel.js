@@ -173,8 +173,4 @@ let config = {
 	}
 };
 
-const commonsChunkPluginIndex = config.plugins.findIndex(plugin => plugin.chunkNames);
-
-config.plugins.splice(commonsChunkPluginIndex, 1);
-
 module.exports = config;

@@ -1,12 +1,25 @@
 require('babel-register');
-var webpack = require('../webpack.config.babel.js');
-var path = require('path');
+const webpack = require('../webpack.config.babel.js');
+const path = require('path');
 
-webpack.module.rules.concat({
-	test: /\.jsx?$/,
-	loader: 'isparta',
-	include: path.resolve(__dirname, '../src')
-});
+const commonsChunkPluginIndex = webpack.plugins.findIndex(plugin => plugin.chunkNames);
+
+webpack.plugins.splice(commonsChunkPluginIndex, 1);
+
+webpack.module.rules.push(
+	{
+		test: /\.js$/,
+    exclude: [
+        path.resolve('node_modules/')
+    ],
+    loader: 'babel-loader'
+	},
+	{
+		test: /\.js?$/,
+		loader: 'isparta-loader',
+		include: path.resolve(__dirname, '../src')
+	}
+);
 
 module.exports = function(config) {
 	config.set({
@@ -38,7 +51,7 @@ module.exports = function(config) {
 			'**/*.js': ['sourcemap']
 		},
 
-		webpack: webpack,
+		webpack,
 		webpackMiddleware: { noInfo: true }
 	});
 };

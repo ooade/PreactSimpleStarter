@@ -1,22 +1,22 @@
 import { h, render, rerender } from 'preact';
-import App from 'components/App';
+import App from '../../src/components/App';
 
 /*global sinon,expect*/
 
 describe('App', function() {
-	let scratch;
+	let node;
 
-	// before( () => {
-	// 	scratch = document.createElement('div');
-	// 	(document.body || document.documentElement).appendChild(scratch);
-	// });
-	//
-	// beforeEach( () => {
-	// 	scratch.innerHTML = '';
-	// });
-	//
-	// after( () => {
-	// 	scratch.parentNode.removeChild(scratch);
-	// 	scratch = null;
-	// });
+	before( () => {
+		node = document.createElement('div');
+		(document.body || document.documentElement).appendChild(node);
+	});
+
+	beforeEach( () => {
+		node.innerHTML = '';
+	});
+
+	after( () => {
+		node.parentNode.removeChild(node);
+		node = null;
+	});
 });
