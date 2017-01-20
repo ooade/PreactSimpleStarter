@@ -9,9 +9,8 @@
     "prestart": "npm run -s build",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "prebuild": "rm -rf build mkdirp build",
-    "test": "npm run -s lint && npm run -s test:karma",
-    "test:karma": "karma start test/karma.conf.js --auto-watch",
-    "lint": "eslint {src,test}",
+    "test": "karma start test/karma.conf.js --single-run",
+    "test:watch": "karma start test/karma.conf.js --auto-watch",
     "push-surge": "npm run -s build && surge ./build -d preact-app.surge.sh"
   },
   "keywords": [
