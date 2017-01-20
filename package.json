@@ -6,13 +6,13 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server",
     "start": "superstatic build -p 9999 --host 0.0.0.0 --gzip -c '{\"rewrites\": [{\"source\":\"**\",\"destination\":\"index.html\"}],\"headers\":[{\"source\":\"**\",\"headers\":[{\"key\":\"Cache-Control\",\"value\":\"max-age=86400\"}]}]}'",
-    "prestart": "npm run build",
+    "prestart": "npm run -s build",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "prebuild": "rm -rf build mkdirp build",
     "test": "npm run -s lint && npm run -s test:karma",
     "test:karma": "karma start test/karma.conf.js --auto-watch",
     "lint": "eslint {src,test}",
-    "push-surge": "npm run build && surge ./build -d preact-app.surge.sh"
+    "push-surge": "npm run -s build && surge ./build -d preact-app.surge.sh"
   },
   "keywords": [
     "preact",

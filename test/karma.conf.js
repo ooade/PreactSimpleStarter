@@ -2,8 +2,8 @@ require('babel-register');
 const webpack = require('../webpack.config.babel.js');
 const path = require('path');
 
+// Hack for commonsChunkPlugin
 const commonsChunkPluginIndex = webpack.plugins.findIndex(plugin => plugin.chunkNames);
-
 webpack.plugins.splice(commonsChunkPluginIndex, 1);
 
 webpack.module.rules.push(

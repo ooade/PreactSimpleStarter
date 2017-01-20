@@ -11,7 +11,7 @@ import Dashboard from 'webpack-dashboard/plugin';
 
 const ENV = process.env.NODE_ENV || 'development';
 
-let config = {
+module.exports = {
 	entry: {
 		app: './src/index.js',
 		vendor: ['preact', 'react-router' , 'redux', 'preact-mdl']
@@ -24,9 +24,8 @@ let config = {
 	},
 
 	resolve: {
-		extensions: ['.js', '.scss'],
+		extensions: ['.js'],
 		alias: {
-			components: path.resolve(__dirname, 'src/components'),    // used for tests
 			'react': 'preact-compat',
 			'react-dom': 'preact-compat'
 		}
@@ -172,5 +171,3 @@ let config = {
 		historyApiFallback: true
 	}
 };
-
-module.exports = config;
