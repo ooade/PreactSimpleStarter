@@ -1,6 +1,10 @@
 # Preact Simple Starter
 
-PWA Simple Starter with Preact, Webpack 2 and your favorite React related packages. This project uses:
+[![Build Status](https://travis-ci.org/ooade/fetch-gifs.svg?branch=master)](https://travis-ci.org/ooade/fetch-gifs)
+
+PWA Simple Starter with Preact, Webpack 2 and your favorite React related packages :rocket:
+
+This App uses:
   - Preact
   - Preact-mdl
   - React-Router
