@@ -10,7 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "prebuild": "rm -rf build mkdirp build",
     "test": "npm run -s lint && npm run -s test:karma",
-    "test:karma": "karma start test/karma.conf.js --single-run",
+    "test:karma": "karma start test/karma.conf.js --auto-watch",
     "lint": "eslint {src,test}",
     "push-surge": "npm run build && surge ./build -d preact-app.surge.sh"
   },
@@ -40,6 +40,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.3",
     "css-loader": "^0.26.1",
+    "enzyme": "^2.7.0",
     "eslint": "^3.12.2",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "^2.2.0",

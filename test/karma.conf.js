@@ -42,7 +42,7 @@ module.exports = function(config) {
 		browsers: ['PhantomJS'],
 
 		files: [
-			'test/browser/**/*.js'
+			'test/components/**/*.js'
 		],
 
 		preprocessors: {

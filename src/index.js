@@ -1,21 +1,9 @@
 import { h, render } from 'preact';
 import { Provider } from 'preact-redux';
 import { Router } from 'react-router';
-import runtime from 'offline-plugin/runtime';
 
-runtime.install({
-	// When an update is ready, tell ServiceWorker to take control immediately:
-	onUpdateReady() {
-		console.log('update ready');
-		runtime.applyUpdate();
-	},
-
-	// Reload to get the new version:
-	onUpdated() {
-		console.log('updated');
-		location.reload();
-	}
-});
+// Load offline plugin only on production
+process.env.NODE_ENV === 'production' && require('./offline');
 
 import 'material-design-lite/material';
 
