@@ -36,13 +36,21 @@ a {
 	color: rgb(103,58,183);
 }
 
-p, .profile {
-	text-align: center;
-	padding: 10px;
-}
-
 .mdl-card {
 	margin: auto;
 	transition: all .3s;
 	transform: translateY(100px);
+}
+
+.error {
+	transform: translateY(250px);
+
+	b {
+		color: #C62828;
+	}
+}
+
+footer {
+	text-align: center;
+	margin-top: 200px;
 }

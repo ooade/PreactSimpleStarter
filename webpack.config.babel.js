@@ -8,13 +8,14 @@ import ManifestPlugin from 'webpack-manifest-plugin';
 import OfflinePlugin from 'offline-plugin';
 import autoprefixer from 'autoprefixer';
 import Dashboard from 'webpack-dashboard/plugin';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
 const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
 	entry: {
 		app: './src/index.js',
-		vendor: ['preact', 'react-router' , 'redux', 'preact-mdl']
+		vendor: ['preact', 'preact-router' , 'redux', 'preact-mdl']
 	},
 
 	output: {
@@ -56,18 +57,6 @@ module.exports = {
 			{
 				test: /\.(scss|css)$/,
 				loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
-			},
-			{
-				test: /\.json$/,
-				loader: 'json-loader'
-			},
-			{
-				test: /\.(xml|txt)$/,
-				loader: 'raw-loader'
-			},
-			{
-				test: /\.(svg|woff|ttf|eot)(\?.*)?$/i,
-				loader: 'file-loader?name=assets/fonts/[name]_[hash:base64:5].[ext]'
 			}
 		]
 	},
@@ -87,7 +76,8 @@ module.exports = {
 			debug: false
 		}),
 		new ExtractTextPlugin({
-			filename: '[name].[chunkhash:5].css'
+			filename: '[name].[chunkhash:5].css',
+			allChunks: true
 		}),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(ENV)
@@ -103,6 +93,9 @@ module.exports = {
 				removeComments: true
 			},
 			themeColor: '#333'
+		}),
+		new ScriptExtHtmlWebpackPlugin({
+		 	defaultAttribute: "async"
 		}),
 		new ManifestPlugin({
 			fileName: 'asset-manifest.json'
@@ -124,10 +117,8 @@ module.exports = {
 			relativePaths: false,
 			publicPath: '/',
 			updateStrategy: 'all',
-			preferOnline: true,
 			safeToUseOptionalCaches: true,
 			caches: 'all',
-			version: 'PreactSSv[hash]',
 			ServiceWorker: {
 				navigateFallbackURL: '/',
 				events: true

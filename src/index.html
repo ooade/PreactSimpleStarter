@@ -21,12 +21,12 @@
 			<link rel="icon" sizes="300x300" href="<%= htmlWebpackPlugin.options.icon %>">
 		<% } %>
 		<% for (var css in  htmlWebpackPlugin.files.css) { %>
-			<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+			<link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[css] %>">
 		<% } %>
 	</head>
 	<body>
 		<% for (var chunk in  htmlWebpackPlugin.files.chunks) { %>
-			<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+			<script rel="preload" src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" as="script"></script>
 		<% } %>
 		<noscript style="text-align:center;">
 			<h2> PreactSS doesn't work without JavaScript. </h2>
