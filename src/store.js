@@ -7,7 +7,7 @@ const defaultState = {
 };
 
 const enhancers = compose(
-	window.devToolsExtension && window.devToolsExtension()
+	process.env.NODE_ENV !== 'production' ? window.devToolsExtension && window.devToolsExtension() : f => f
 );
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
