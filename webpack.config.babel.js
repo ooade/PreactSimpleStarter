@@ -22,7 +22,7 @@ module.exports = {
 		path: path.resolve(__dirname, './build'),
 		filename: '[name].[hash:8].js',
 		chunkFilename: '[id].[hash:8].chunk.js',
-                publicPath: '/'
+		publicPath: '/'
 	},
 
 	resolve: {
