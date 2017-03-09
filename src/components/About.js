@@ -2,6 +2,11 @@ import { h } from 'preact';
 import { Link } from 'preact-router';
 import { Button } from 'preact-mdl';
 
+const socialLinks = [
+  { name: 'Github', profile: 'https://github.com/ooade', color: '#424242' },
+  { name: 'Twitter', profile: 'https://twitter.com/_ooade', color: '#03A9F4' }
+];
+
 export default() => {
   return (
     <div style={{ padding: 100 }}>
@@ -13,17 +18,15 @@ export default() => {
       </p>
       <div style={{ padding: 50 }}>
         <p> Really wanna know about me ??? 🙊🙊 Check me out on: </p>
-        <a href='https://github.com/ooade'>
-          <Button colored raised style={{ backgroundColor: '#424242' }}>
-             Github
-          </Button>
-        </a>
-        {' '}
-        <a href='https://twitter.com/_ooade'>
-          <Button colored raised style={{ backgroundColor: '#03A9F4' }}>
-             Twitter
-          </Button>
-        </a>
+        {
+          socialLinks.map(s =>
+            <a href={s.profile}>
+              <Button colored raised style={{ backgroundColor: s.color }}>
+                 {s.name}
+              </Button> {" "}
+            </a>
+          )
+        }
       </div>
     </div>
   );

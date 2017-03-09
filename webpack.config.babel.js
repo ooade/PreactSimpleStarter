@@ -86,7 +86,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
 			title: 'Preact Simple Starter',
-		 	removeRedundantAttributes: true,
+			removeRedundantAttributes: true,
 			inject: false,
 			manifest: `${ENV === 'production' ? 'manifest.json' : '/assets/manifest.json' }`,
 			minify: {
@@ -96,7 +96,7 @@ module.exports = {
 			themeColor: '#333'
 		}),
 		new ScriptExtHtmlWebpackPlugin({
-		 	defaultAttribute: "async"
+			defaultAttribute: "async"
 		}),
 		new ManifestPlugin({
 			fileName: 'asset-manifest.json'
