@@ -1,6 +1,6 @@
 # Preact Simple Starter
 
-[![Build Status](https://travis-ci.org/ooade/fetch-gifs.svg?branch=master)](https://travis-ci.org/ooade/fetch-gifs) [![Code Climate Badge](https://codeclimate.com/github/ooade/PreactSimpleStarter/badges/gpa.svg)](https://codeclimate.com/github/ooade/PreactSimpleStarter/badges)
+[![Build Status](https://travis-ci.org/ooade/fetch-gifs.svg?branch=master)](https://travis-ci.org/ooade/fetch-gifs) [![Code Climate Badge](https://codeclimate.com/github/ooade/PreactSimpleStarter/badges/gpa.svg)](https://codeclimate.com/github/ooade/PreactSimpleStarter/badges) [![Greenkeeper badge](https://badges.greenkeeper.io/ooade/PreactSimpleStarter.svg)](https://greenkeeper.io/)
 
 PWA Simple Starter with Preact, Webpack 2 and your favorite React related packages :rocket:
 
