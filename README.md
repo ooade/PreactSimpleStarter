@@ -65,7 +65,7 @@ yarn run dev
 
 > This is a full web server nicely suited to your project. Any time you make changes within the `src` directory, it will rebuild and even refresh your browser.
 
-> :information_source: Try to avoid using Service Worker in your development environment, because you'll need to hard reload the page anytime you make a change.
+> :information_source: Try to avoid using Service Worker in your development environment, so you won't need to hard reload the page anytime you make a change.
 
 **5. Generate a production build in `./build`:**
 
