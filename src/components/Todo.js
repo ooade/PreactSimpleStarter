@@ -28,7 +28,7 @@ export default class App extends Component {
 					<TextField
 						floating-label
 						value={text}
-						onInput={this.linkState('text')}
+						onInput={e => this.setState({ text: e.target.value })}
 						label='What must be done?'
 					/>
 				</form>
