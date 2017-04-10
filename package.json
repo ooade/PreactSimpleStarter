@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "material-design-lite": "^1.2.1",
-    "preact": "^7.1.0",
+    "preact": "^8.1.0",
     "preact-compat": "^3.9.4",
     "preact-mdl": "^2.2.0",
     "preact-redux": "^2.0.0",
