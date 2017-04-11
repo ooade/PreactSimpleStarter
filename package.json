@@ -78,7 +78,7 @@
     "preact-compat": "^3.9.4",
     "preact-mdl": "^2.2.0",
     "preact-redux": "^2.0.0",
-    "preact-router": "^2.3.2",
+    "preact-router": "^2.4.5",
     "react-helmet": "^5.0.0",
     "redux": "^3.6.0"
   }
