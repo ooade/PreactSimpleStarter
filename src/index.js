@@ -8,7 +8,6 @@ process.env.NODE_ENV === 'production' && require('./offline');
 import 'material-design-lite/material';
 
 import App from './components/App';
-import About from './components/About';
 import ErrorPage from './components/404';
 
 import store from './store';
@@ -19,7 +18,6 @@ render(
 	<Provider store={store}>
 		<Router>
 			<App path='/' />
-			<About path='/about' />
 			<ErrorPage default />
 		</Router>
 	</Provider>, document.body);
