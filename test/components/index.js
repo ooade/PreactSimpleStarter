@@ -50,16 +50,6 @@ describe('Test', () => {
 			/* Just make sure they have the same text, mdl gives ids to input[type:text]*/
 			expect(node.innerText).to.contain(TodoComponent.innerText);
 		});
-
-		it('should render a footer', () => {
-			render(connect(App), node);
-			expect(node.innerHTML).to.contain('<footer>');
-		});
-
-		it('should contain a link to about page', () => {
-			render(connect(App), node);
-			expect(node.innerHTML).to.match(/a.*href.*about/);
-		});
 	});
 
 	describe('Todo', () => {
