@@ -6,7 +6,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import OfflinePlugin from 'offline-plugin';
-import autoprefixer from 'autoprefixer';
 import Dashboard from 'webpack-dashboard/plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
@@ -15,7 +14,7 @@ const ENV = process.env.NODE_ENV || 'development';
 module.exports = {
 	entry: {
 		app: './src/index.js',
-		vendor: ['preact', 'preact-router' , 'redux', 'preact-mdl']
+		vendor: ['preact', 'preact-router', 'redux', 'preact-mdl']
 	},
 
 	output: {
@@ -28,7 +27,7 @@ module.exports = {
 	resolve: {
 		extensions: ['.js'],
 		alias: {
-			'react': 'preact-compat',
+			react: 'preact-compat',
 			'react-dom': 'preact-compat'
 		}
 	},
@@ -57,25 +56,19 @@ module.exports = {
 			},
 			{
 				test: /\.(scss|css)$/,
-				loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
+				loader: ExtractTextPlugin.extract(
+					'css-loader?sourceMap!postcss-loader?sourceMap!sass-loader?sourceMap'
+				)
 			}
 		]
 	},
 
-	plugins: ([
+	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
 			minChunks: Infinity
-		 }),
-		new webpack.optimize.OccurrenceOrderPlugin(),
-		new webpack.LoaderOptionsPlugin({
-			options: {
-				context: __dirname,
-				postcss: [autoprefixer]
-			},
-			minimize: true,
-			debug: false
 		}),
+		new webpack.optimize.OccurrenceOrderPlugin(),
 		new ExtractTextPlugin({
 			filename: '[name].[chunkhash:5].css',
 			allChunks: true
@@ -88,7 +81,7 @@ module.exports = {
 			title: 'Preact Simple Starter',
 			removeRedundantAttributes: true,
 			inject: false,
-			manifest: `${ENV === 'production' ? 'manifest.json' : '/assets/manifest.json' }`,
+			manifest: `${ENV === 'production' ? 'manifest.json' : '/assets/manifest.json'}`,
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true
@@ -96,61 +89,66 @@ module.exports = {
 			themeColor: '#333'
 		}),
 		new ScriptExtHtmlWebpackPlugin({
-			defaultAttribute: "async"
+			defaultAttribute: 'async'
 		}),
 		new ManifestPlugin({
 			fileName: 'asset-manifest.json'
 		})
-	])
-	// Only for development
-	.concat(ENV === 'development' ? [
-		new webpack.HotModuleReplacementPlugin(),
-		new Dashboard()
-	] : [])
-	// Only for production
-	.concat(ENV === 'production' ? [
-		new webpack.NoEmitOnErrorsPlugin(),
-		new CopyWebpackPlugin([
-			{ from: './src/assets/manifest.json', to: './' },
-			{ from: './src/assets/img', to: './img' }
-		]),
-		new OfflinePlugin({
-			relativePaths: false,
-			publicPath: '/',
-			updateStrategy: 'all',
-			safeToUseOptionalCaches: true,
-			caches: 'all',
-			ServiceWorker: {
-				navigateFallbackURL: '/',
-				events: true
-			},
-			AppCache: false
-		}),
-		new webpack.optimize.UglifyJsPlugin({
-			output: {
-				comments: 0
-			},
-			compress: {
-				unused: 1,
-				warnings: 0
-			}
-		}),
-		// CompressionPlugin Usage in Express
-		/**
+	]
+		// Only for development
+		.concat(
+			ENV === 'development'
+				? [new webpack.HotModuleReplacementPlugin(), new Dashboard()]
+				: []
+		)
+		// Only for production
+		.concat(
+			ENV === 'production'
+				? [
+						new webpack.NoEmitOnErrorsPlugin(),
+						new CopyWebpackPlugin([
+							{ from: './src/assets/manifest.json', to: './' },
+							{ from: './src/assets/img', to: './img' }
+						]),
+						new OfflinePlugin({
+							relativePaths: false,
+							publicPath: '/',
+							updateStrategy: 'all',
+							safeToUseOptionalCaches: true,
+							caches: 'all',
+							ServiceWorker: {
+								navigateFallbackURL: '/',
+								events: true
+							},
+							AppCache: false
+						}),
+						new webpack.optimize.UglifyJsPlugin({
+							output: {
+								comments: 0
+							},
+							compress: {
+								unused: 1,
+								warnings: 0
+							}
+						}),
+						// CompressionPlugin Usage in Express
+						/**
 			app.get('*.js', function (req, res, next) {
 				req.url = req.url + '.gz';
 				res.set('Content-Encoding', 'gzip');
 				next();
 			});
 		**/
-		new CompressionPlugin({
-			asset: "[path].gz[query]",
-			algorithm: "gzip",
-			test: /\.js$|\.css$|\.html$/,
-			threshold: 10240,
-			minRatio: 0.8
-		})
-	] : []),
+						new CompressionPlugin({
+							asset: '[path].gz[query]',
+							algorithm: 'gzip',
+							test: /\.js$|\.css$|\.html$/,
+							threshold: 10240,
+							minRatio: 0.8
+						})
+					]
+				: []
+		),
 
 	stats: { colors: true },
 
