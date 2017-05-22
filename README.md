@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/ooade/fetch-gifs.svg?branch=master)](https://travis-ci.org/ooade/fetch-gifs) [![Code Climate Badge](https://codeclimate.com/github/ooade/PreactSimpleStarter/badges/gpa.svg)](https://codeclimate.com/github/ooade/PreactSimpleStarter/badges)
 
+<b> It's highly recommended to use the <a href="https://github.com/developit/preact-cli"> preact-cli </a> because it's a lot simpler with less caveat :package:</b>
+
 PWA Simple Starter with Preact, Webpack 2 and your favorite React related packages :rocket:
 
 This App uses:
