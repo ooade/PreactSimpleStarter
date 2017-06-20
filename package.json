@@ -70,7 +70,7 @@
     "url-loader": "^0.5.7",
     "webpack": "2.6.1",
     "webpack-dashboard": "^0.4.0",
-    "webpack-dev-server": "2.4.5",
+    "webpack-dev-server": "2.5.0",
     "webpack-manifest-plugin": "^1.1.0"
   },
   "dependencies": {
