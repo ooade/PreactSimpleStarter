@@ -65,7 +65,7 @@
     "sinon": "^3.0.0",
     "sinon-chai": "^2.8.0",
     "source-map-loader": "^0.2.0",
-    "superstatic": "^4.0.3",
+    "superstatic": "^5.0.0",
     "url-loader": "^0.5.7",
     "webpack": "^3.0.0",
     "webpack-dashboard": "^1.0.0-3",
