@@ -23,7 +23,7 @@
   "license": "MIT",
   "author": "Ademola Adegbuyi <marhyorh@gmail.com>",
   "devDependencies": {
-    "autoprefixer": "^7.0.1",
+    "autoprefixer": "^8.0.0",
     "babel": "^6.5.2",
     "babel-core": "^6.20.0",
     "babel-eslint": "^8.0.0",
