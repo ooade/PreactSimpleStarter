@@ -67,7 +67,7 @@
     "source-map-loader": "^0.2.0",
     "superstatic": "^5.0.0",
     "url-loader": "^0.6.1",
-    "webpack": "^3.0.0",
+    "webpack": "^4.0.0",
     "webpack-dashboard": "^1.0.0-3",
     "webpack-dev-server": "^2.5.0",
     "webpack-manifest-plugin": "^1.1.0"
