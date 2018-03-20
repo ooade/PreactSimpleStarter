@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
@@ -12,6 +12,7 @@ import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
+	mode: ENV,
 	entry: {
 		app: './src/index.js',
 		vendor: ['preact', 'preact-router', 'redux', 'preact-mdl']
@@ -29,6 +30,18 @@ module.exports = {
 		alias: {
 			react: 'preact-compat',
 			'react-dom': 'preact-compat'
+		}
+	},
+
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendor',
+					chunks: 'all'
+				}
+			}
 		}
 	},
 
@@ -56,20 +69,18 @@ module.exports = {
 			},
 			{
 				test: /\.(scss|css)$/,
-				loader: ExtractTextPlugin.extract(
-					'css-loader?sourceMap!postcss-loader?sourceMap!sass-loader?sourceMap'
-				)
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'sass-loader',
+					'postcss-loader'
+				]
 			}
 		]
 	},
 
 	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor',
-			minChunks: Infinity
-		}),
-		new webpack.optimize.OccurrenceOrderPlugin(),
-		new ExtractTextPlugin({
+		new MiniCssExtractPlugin({
 			filename: '[name].[chunkhash:5].css',
 			allChunks: true
 		}),
@@ -81,7 +92,9 @@ module.exports = {
 			title: 'Preact Simple Starter',
 			removeRedundantAttributes: true,
 			inject: false,
-			manifest: `${ENV === 'production' ? 'manifest.json' : '/assets/manifest.json'}`,
+			manifest: `${
+				ENV === 'production' ? 'manifest.json' : '/assets/manifest.json'
+			}`,
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true
@@ -146,7 +159,7 @@ module.exports = {
 							threshold: 10240,
 							minRatio: 0.8
 						})
-					]
+				  ]
 				: []
 		),
 
