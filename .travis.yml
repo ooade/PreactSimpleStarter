@@ -4,6 +4,7 @@ language: node_js
 
 node_js:
   - '8.1.0'
+  - '10'
 
 # Make chrome browser available for testing
 before_install:
