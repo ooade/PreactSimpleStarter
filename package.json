@@ -38,7 +38,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.0",
     "css-loader": "^1.0.0",
-    "enzyme": "^3.0.0",
+    "enzyme": "^3.6.0",
     "eslint": "^5.0.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.2.0",
