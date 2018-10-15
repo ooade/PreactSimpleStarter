@@ -57,7 +57,7 @@
     "karma-webpack": "^3.0.0",
     "mkdirp": "^0.5.1",
     "mocha": "^5.0.0",
-    "node-sass": "^4.5.2",
+    "node-sass": "4.9.3",
     "offline-plugin": "^5.0.1",
     "postcss-loader": "^2.0.5",
     "sass-loader": "^7.0.0",
